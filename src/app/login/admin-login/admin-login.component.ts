@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './admin-login.component.html',
@@ -17,7 +17,7 @@ export class AdminLoginComponent implements OnInit {
    * @param route : Router
    * @param loginService : LoginService
    */
-  constructor(private fb: FormBuilder, private route: Router ) {
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
     /**
      * Login form initialized with default values.
@@ -26,19 +26,21 @@ export class AdminLoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-   }
+  }
 
   /**
    * This method returns the error messages.
    */
   getErrorMessage() {
     return this.loginForm.get('username').hasError('required') ? 'You must enter a value' :
-        this.loginForm.get('password').hasError('required') ? 'You must enter a value' :
-            '';
+      this.loginForm.get('password').hasError('required') ? 'You must enter a value' :
+        '';
   }
 
   /** Clears the local storage initially */
   ngOnInit() {
+    console.log('here......' + this.route.snapshot.queryParamMap.get('redirectTo'));
+    // console.log(this.r.getPreviousUrl());
     if (localStorage.getItem('TOKEN')) {
       localStorage.clear();
     }
@@ -58,6 +60,7 @@ export class AdminLoginComponent implements OnInit {
     // } else {
     //   this.toastrService.warning('Please enter valid credentials!', 'User Management Portal');
     // }
+    
 
   }
 

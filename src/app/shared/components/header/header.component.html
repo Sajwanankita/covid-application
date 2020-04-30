@@ -2,8 +2,11 @@
     <div class="title">Covid App</div>
     <div class="sub-title">
         <span>India</span>
+
         <button type="submit" mat-button>
-            <a [routerLink]="['login']" routerLinkActive='active'>Login
+            <a [routerLink]="['login']" 
+            [queryParams]="{'redirectTo':router.url}"
+            routerLinkActive='active'>Login
             </a>
         </button>
     </div>
