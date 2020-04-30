@@ -1,0 +1,29 @@
+.title {
+    margin-bottom: 20px;
+
+    font-family: "archia";
+    font-size: 24px!important;
+    font-weight: 900;
+}
+.sub-title {
+    margin-bottom: 15px;
+    font-family: "archia";
+    font-size: 20px!important;
+    font-weight: 900;
+}
+
+.header {
+    color: white;
+    background: #005b9f;
+    border: .5px solid rgba(0,0,0,.03);
+}
+
+
+button {
+    display: flex;
+    float: right;
+    justify-content: flex-end;
+    font-family: "archia";
+    font-size: 22px!important;
+    font-weight: 900;
+  }

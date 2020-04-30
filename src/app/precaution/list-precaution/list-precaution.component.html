@@ -1,0 +1,11 @@
+<div class="card-container">
+    <div class="card-title">
+        Precautions
+    </div>
+    <div class="card-content" *ngFor="let precaution of precautions">
+        <p-card class="card" header="{{precaution.number}}. {{precaution.title}}">
+            <div>{{precaution.description}}</div>
+        </p-card>
+    
+    </div>
+</div>

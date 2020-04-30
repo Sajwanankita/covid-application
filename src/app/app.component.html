@@ -1,0 +1,26 @@
+<covid-app-header></covid-app-header>
+
+<nav mat-tab-nav-bar [backgroundColor]="background" mat-align-tabs="center">
+  <a mat-tab-link *ngFor="let link of links"
+       [routerLink]="[link.link]"
+
+       
+       (click)="activeLink = link"
+     [active]="activeLink == link"
+      >{{link.title}}
+    </a>
+    <!-- <a mat-tab-link
+    [active]="true"
+       [routerLink]="['latest-news']"
+      
+    >Latest News
+    </a>
+    <a mat-tab-link
+       [routerLink]="['precautions']"
+       routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">Precautions
+    </a> -->
+</nav>
+
+<router-outlet></router-outlet>
+<!-- <covid-app-states-report></covid-app-states-report> -->

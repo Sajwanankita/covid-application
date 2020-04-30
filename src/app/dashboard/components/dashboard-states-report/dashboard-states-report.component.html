@@ -1,0 +1,45 @@
+
+
+        
+
+
+<div class="my" >
+    <div class="report-header">
+        <span class="state-title">State</span>
+        <span class="active-title">Active</span>
+        <span class="confirmed-title">Confirmed</span>
+        <span class="recovered-title">Recovered</span>
+        <span class="deaths-title">Deaths</span>
+    </div>
+    <p-accordion [multiple]="true" *ngFor="let report of reports" >
+        <p-accordionTab >
+            <p-header>
+                <table class="table" (click)="onClick(report.statecode, $event)">
+                    <thead>
+                        <tr>
+                            <th class="state" scope="col">{{report.state}}</th>
+                            <th class="active" scope="col">{{report.active}} </th>
+                            <th class="confirmed" scope="col">{{report.confirmed}} </th>
+                            <th class="recovered" scope="col">{{report.recovered}}</th>
+                            <th class="deaths" scope="col">{{report.deaths}}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </p-header>
+            <covid-app-dashboard-districts-report *ngIf="report.state !== 'Total'" [districtData]="districtReport[report.state]"></covid-app-dashboard-districts-report>
+        </p-accordionTab>
+    </p-accordion>
+</div>
+
+
+
+
+<!-- <p-card>
+    <p-header>
+        Header content here
+    </p-header>
+    Body Content
+    <p-footer>
+        Footer content here
+    </p-footer>
+</p-card> -->
