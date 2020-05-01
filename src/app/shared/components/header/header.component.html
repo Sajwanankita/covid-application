@@ -2,11 +2,13 @@
     <div class="title">Covid App</div>
     <div class="sub-title">
         <span>India</span>
-
-        <button type="submit" mat-button>
-            <a [routerLink]="['login']" 
-            [queryParams]="{'redirectTo':router.url}"
-            routerLinkActive='active'>Login
+        <button mat-button>
+            <a *ngIf="!isUserActive()" [routerLink]="['login']" [queryParams]="{'redirectTo':router.url}"
+                routerLinkActive='active'>Login
+            </a>
+        </button>
+        <button mat-button (click)="logoutUser()">
+            <a *ngIf="isUserActive()"  >Logout
             </a>
         </button>
     </div>

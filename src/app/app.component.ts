@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Covidservice } from './core/services/covid-report.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'covid-app-root',
@@ -23,14 +24,17 @@ export class AppComponent implements OnInit {
   }
   ];
   activeLink = '';
-  background: ThemePalette = undefined;
 
-  constructor(private readonly covidService: Covidservice) {
+  constructor(private readonly router: Router) {
 
   }
 
   ngOnInit() {
-    // console.log(this.covidService.getCovidReport());
+
+  }
+
+  isRouteActive(link: string): boolean {
+    return ('/' + link) === this.router.url ? true : false;
   }
 
 }

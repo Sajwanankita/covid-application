@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  getPrecautions } from 'src/app/core/fixtures/precaution';
+import {  getPrecautions } from './../../../app/core/fixtures/precaution.fixture';
 import { Precaution } from 'src/app/core/models/precaution';
 
 @Component({

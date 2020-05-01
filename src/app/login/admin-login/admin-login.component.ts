@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/core/services/login.service';
+import { FieldValidationLength } from 'src/app/core/constants/field-validation-length';
 
 @Component({
   templateUrl: './admin-login.component.html',
@@ -10,58 +13,84 @@ export class AdminLoginComponent implements OnInit {
 
   // variable of login form.
   loginForm: FormGroup;
+  isChecked: boolean;
 
   /**
    *
-   * @param fb : FormBuilder
+   * @param formBuilder : FormBuilder
    * @param route : Router
    * @param loginService : LoginService
    */
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private readonly loginService: LoginService,
+    private route: ActivatedRoute, private readonly toastrService: ToastrService) {
+
+    this.isChecked = false;
 
     /**
      * Login form initialized with default values.
      */
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required,
+      Validators.minLength(FieldValidationLength.USERNAME_MIN_LENGTH),
+      Validators.maxLength(FieldValidationLength.USERNAME_MAX_LENGTH)]],
+      password: ['', [Validators.required,
+      Validators.minLength(FieldValidationLength.PASSWORD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationLength.PASSWORD_MAX_LENGTH)]]
     });
   }
 
   /**
    * This method returns the error messages.
    */
-  getErrorMessage() {
-    return this.loginForm.get('username').hasError('required') ? 'You must enter a value' :
-      this.loginForm.get('password').hasError('required') ? 'You must enter a value' :
-        '';
+  getErrorMessage(field: string): string {
+    if (this.loginForm.controls[field].errors) {
+      if (this.loginForm.controls[field].errors.required) {
+        return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} is a required field`;
+      }
+      else if (this.loginForm.controls[field].errors.minlength) {
+        console.log('here');
+        return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} should be of min length
+         ${this.loginForm.controls[field].errors.minlength.requiredLength}`;
+      }
+      else if (this.loginForm.controls[field].errors.maxlength) {
+        return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} should be of max length
+        ${this.loginForm.controls[field].errors.maxlength.requiredLength}`;
+      }
+    }
   }
-
   /** Clears the local storage initially */
   ngOnInit() {
-    console.log('here......' + this.route.snapshot.queryParamMap.get('redirectTo'));
-    // console.log(this.r.getPreviousUrl());
-    if (localStorage.getItem('TOKEN')) {
-      localStorage.clear();
-    }
+    // this.isChecked = false;
+    // console.log(this.isChecked);
+    // console.log('here......' + this.route.snapshot.queryParamMap.get('redirectTo'));
   }
 
   /**
    * Login the user and redirect to dashboard when valid.
    * @param myform : IUser
    */
-  login(myform: any) {
+  login() {
     console.log('hello');
-    // if (this.loginService.validateUser(myform)) {
-    //   localStorage.setItem('TOKEN', 'token');
-    //   localStorage.setItem('username', myform.username);
-    //   this.route.navigate(['/dashboard']);
-    //   this.toastrService.success('Logged in successfully!', 'User Management Portal');
-    // } else {
-    //   this.toastrService.warning('Please enter valid credentials!', 'User Management Portal');
-    // }
-    
+    if (this.loginService.validateUser(this.loginForm.value)) {
+      localStorage.setItem('TOKEN', 'token');
+      localStorage.setItem('username', this.loginForm.value.username);
+      this.toastrService.success('Logged in successfully!', 'Covid India Portal');
+      const redirectTo = this.route.snapshot.queryParamMap.get('redirectTo');
+      if (redirectTo !== null) {
+        this.router.navigate([redirectTo]);
+      } else {
+        this.router.navigate(['/news/add-news']);
+      }
 
+    } else {
+      this.toastrService.error('Please enter valid credentials!', 'Covid India Portal');
+    }
+
+  }
+
+  isToggleChecked() {
+    return this.isChecked;
   }
 
   /**
@@ -69,6 +98,12 @@ export class AdminLoginComponent implements OnInit {
    */
   resetForm() {
     this.loginForm.reset();
+    this.loginForm.clearValidators();
+  }
+
+  toggleCheck() {
+    this.isChecked = !this.isChecked;
+    console.log(this.isChecked);
   }
 
 }

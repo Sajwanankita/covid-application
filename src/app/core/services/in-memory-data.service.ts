@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { News } from '../models/news';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryNewsDataService implements InMemoryDbService {
+export class InMemoryDataService implements InMemoryDbService {
   createDb() {
 
     /** Default News collection. */
@@ -22,12 +23,15 @@ export class InMemoryNewsDataService implements InMemoryDbService {
       description: '9876543210',
       fullNews: '9876543210'
     }];
-
-    return { news };
-  }
-
-  genId(news: News[]): number {
-    return news.length > 0 ? Math.max(...news.map(user => user.id)) + 1 : 1;
+    const users: User[] = [
+      {
+        username: 'admin',
+        password: 'admin'
+      }
+    ]
+    return { news, users };
   }
 }
+
+
 

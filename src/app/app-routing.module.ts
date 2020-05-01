@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     path: 'login',
     pathMatch: 'full',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  }
+  },
+  { path: '**', component: PageNotFoundComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

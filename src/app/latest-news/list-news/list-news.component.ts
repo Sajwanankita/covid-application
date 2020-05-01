@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { News } from './../../core/models/news';
 import { NewsService } from '../../core/services/news.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,8 +17,10 @@ export class ListNewsComponent implements OnInit {
   newsList: News[] = [];
 
   constructor(private readonly route: ActivatedRoute,
-              private readonly router: Router,
-              private readonly newsService: NewsService) { }
+    private readonly router: Router,
+    private readonly newsService: NewsService,
+    private readonly toastrService: ToastrService
+  ) { }
 
   ngOnInit() {
     this.getNews();
@@ -41,7 +44,13 @@ export class ListNewsComponent implements OnInit {
   }
 
   addNews() {
-    this.router.navigate(['add-news'], { relativeTo: this.route.parent });
+    console.log(localStorage.getItem('TOKEN'));
+    if (localStorage.getItem('TOKEN') === null) {
+      this.router.navigate(['login'], { queryParams: { redirectTo: '/news/add-news' } });
+      this.toastrService.info('Please login to add news!', 'Covid India Portal');
+    } else {
+      this.router.navigate(['add-news'], { relativeTo: this.route.parent })
+    }
   }
 
 }

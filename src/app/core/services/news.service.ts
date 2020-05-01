@@ -24,12 +24,12 @@ export class NewsService {
     }
 
     fetchNews(): Observable<News[]> {
-        return this.http.get<News[]>(this.apiurl);
+        return this.http.get<News[]>(this.apiurl).pipe(catchError(this.handleError));
     }
 
-    addNews(news: News): void {
+    addNews(news: News): Observable<any> {
         console.log('here.... hhhhhhhhhhhhh...');
         console.log(news);
-        this.http.post<News>(this.apiurl, news, this.httpOptions);
+        return this.http.post<News>(this.apiurl, news, this.httpOptions).pipe(catchError(this.handleError));
     }
 }

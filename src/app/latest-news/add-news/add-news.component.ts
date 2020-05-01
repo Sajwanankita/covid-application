@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FieldValidationLength } from 'src/app/core/constants/field-validation-length';
 import { News } from './../../core/models/news';
 import { NewsService } from 'src/app/core/services/news.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'covid-app-add-news',
@@ -17,12 +18,19 @@ export class AddNewsComponent implements OnInit {
   news: News;
 
   constructor(private formBuilder: FormBuilder, private readonly route: ActivatedRoute,
-           private readonly router: Router, private newsService: NewsService) {
+    private readonly router: Router, private newsService: NewsService,
+     private readonly toastrService: ToastrService) {
 
   }
 
 
   ngOnInit() {
+
+    if (localStorage.getItem('TOKEN') === null) {
+      this.router.navigate(['/login']);
+      this.toastrService.info('Please login to add news!', 'Covid India Portal');
+
+    }
     this.loginForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(FieldValidationLength.TITLE_FIELD_MIN_LENGTH),
       Validators.maxLength(FieldValidationLength.TITLE_FIELD_MAX_LENGTH)]],
@@ -34,18 +42,18 @@ export class AddNewsComponent implements OnInit {
       Validators.maxLength(FieldValidationLength.FULL_NEWS_FIELD_MAX_LENGTH)]]
     });
   }
-
+  //TODO
   addNews() {
     this.newsService.addNews({
       title: this.loginForm.get('title').value,
       fullNews: this.loginForm.get('fullNews').value,
       description: this.loginForm.get('description').value,
       summary: this.loginForm.get('summary').value
+    }).subscribe(data => {
+      console.log(data);
+
     });
     this.router.navigate(['news']);
-    this.newsService.fetchNews().subscribe(data => {
-      console.log(data);
-    });
   }
 
   getErrorMessage(field: string): string {
@@ -53,15 +61,12 @@ export class AddNewsComponent implements OnInit {
       if (this.loginForm.controls[field].errors.required) {
         return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} is a required field`;
       }
-      console.log('here');
-      console.log(this.loginForm.controls[field].errors);
-      console.log(this.loginForm.controls[field].errors.minlength);
-      if (this.loginForm.controls[field].errors.minlength) {
+      else if (this.loginForm.controls[field].errors.minlength) {
         console.log('here');
         return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} should be of min length
          ${this.loginForm.controls[field].errors.minlength.requiredLength}`;
       }
-      if (this.loginForm.controls[field].errors.maxlength) {
+      else if (this.loginForm.controls[field].errors.maxlength) {
         return `${field[0].toUpperCase() + field.substr(1).toLowerCase()} should be of max length
         ${this.loginForm.controls[field].errors.maxlength.requiredLength}`;
       }
@@ -69,11 +74,11 @@ export class AddNewsComponent implements OnInit {
   }
 
   cancelForm() {
-
+    this.router.navigate(['news']);
   }
 
   resetForm() {
-
+    this.loginForm.reset();
   }
 
 }

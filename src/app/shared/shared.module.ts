@@ -25,13 +25,16 @@ import {
   MatDialogModule
 } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
 ];
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     PanelModule,
@@ -45,6 +48,8 @@ export const routes: Routes = [
     MatButtonModule,
     DialogModule,
     MatDialogModule,
+    MatCheckboxModule,
+    ToastrModule.forRoot(),
     RouterModule.forChild(routes)
   ],
   exports: [
@@ -59,9 +64,11 @@ export const routes: Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatCheckboxModule,
     DialogModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    ToastrModule
   ]
 })
 export class SharedModule { }

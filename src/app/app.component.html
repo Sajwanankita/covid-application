@@ -1,12 +1,11 @@
 <covid-app-header></covid-app-header>
 
-<nav mat-tab-nav-bar [backgroundColor]="background" mat-align-tabs="center">
+<nav  mat-tab-nav-bar mat-align-tabs="left">
   <a mat-tab-link *ngFor="let link of links"
        [routerLink]="[link.link]"
-
        
        (click)="activeLink = link"
-     [active]="activeLink == link"
+     [active]="isRouteActive(link.link)"
       >{{link.title}}
     </a>
     <!-- <a mat-tab-link

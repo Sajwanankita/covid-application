@@ -12,7 +12,7 @@
             <button pButton type="button" icon="pi pi-search" label="View Full News" class="ui-button-secondary" (click)="viewFullNews()"></button>
         </p-footer>
     </p-panel>
-    <p-dialog header="Godfather Casting" [(visible)]="display" [maximizable]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p-dialog header="{{news.title}}" [(visible)]="display" [maximizable]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
         {{news.fullNews}}
     </p-dialog>
 </div>
