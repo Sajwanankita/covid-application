@@ -3,17 +3,17 @@
         <mat-card-title>Add News</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="addNews()">
+        <form [formGroup]="addNewsForm" (ngSubmit)="addNews()">
             <div class="form-div">
                 <mat-form-field class="field-container">
 
                     <input matInput placeholder="Title" formControlName="title" required>
-                    <mat-error *ngIf="loginForm.get('title').invalid">{{getErrorMessage('title')}}</mat-error>
+                    <mat-error *ngIf="addNewsForm.get('title').invalid">{{getErrorMessage('title')}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="field-container">
                     <input matInput placeholder="Description" formControlName="description" required>
-                    <mat-error class="error" *ngIf="loginForm.get('description').invalid">
+                    <mat-error class="error" *ngIf="addNewsForm.get('description').invalid">
                         {{getErrorMessage('description')}}
                     </mat-error>
                 </mat-form-field>
@@ -21,19 +21,19 @@
                 <mat-form-field class="field-container">
                     <textarea matInput placeholder="Summary" formControlName="summary" required matTextareaAutosize
                         [matAutosizeMinRows]=1 [matAutosizeMaxRows]=6></textarea>
-                    <mat-error class="error" *ngIf="loginForm.get('summary').invalid">{{getErrorMessage('summary')}}
+                    <mat-error class="error" *ngIf="addNewsForm.get('summary').invalid">{{getErrorMessage('summary')}}
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="field-container">
                     <textarea matInput placeholder="Full News" formControlName="fullNews" required matTextareaAutosize
                         [matAutosizeMinRows]=1 [matAutosizeMaxRows]=12></textarea>
-                    <mat-error class="error" *ngIf="loginForm.get('fullNews').invalid">{{getErrorMessage('fullNews')}}
+                    <mat-error class="error" *ngIf="addNewsForm.get('fullNews').invalid">{{getErrorMessage('fullNews')}}
                     </mat-error>
                 </mat-form-field>
 
                 <mat-card-actions>
-                    <button type="submit" mat-raised-button [disabled]="!loginForm.valid">Add</button>
+                    <button type="submit" mat-raised-button [disabled]="!addNewsForm.valid">Add</button>
                     <button type="button" mat-raised-button (click)="cancelForm()">Cancel</button>
                     <button type="button" mat-raised-button (click)="resetForm()">Reset</button>
                 </mat-card-actions>

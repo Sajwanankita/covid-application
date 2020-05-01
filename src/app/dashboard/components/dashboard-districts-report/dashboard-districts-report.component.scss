@@ -1,8 +1,15 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+  text-align: center;
+}
 
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  text-align: center;
+}

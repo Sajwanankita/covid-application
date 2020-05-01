@@ -1,26 +1,26 @@
 
 
 <table mat-table [dataSource]="reports | keyvalue" class="mat-elevation-z8">
-    <ng-container matColumnDef="districtName">
+    <ng-container matColumnDef="district">
       <th mat-header-cell *matHeaderCellDef> District </th>
       <td mat-cell *matCellDef="let element"> {{element.key}} </td>
     </ng-container>
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="active-cases">
       <th mat-header-cell *matHeaderCellDef> Active Cases </th>
       <td mat-cell *matCellDef="let element"> {{element.value.active}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="confirmed-cases">
       <th mat-header-cell *matHeaderCellDef> Confirmed Cases </th>
       <td mat-cell *matCellDef="let element"> {{element.value.confirmed}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef="diseased-cases">
       <th mat-header-cell *matHeaderCellDef> Diseased Cases  </th>
       <td mat-cell *matCellDef="let element"> {{element.value.deceased}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="recovered-cases">
       <th mat-header-cell *matHeaderCellDef> Recovered Cases  </th>
       <td mat-cell *matCellDef="let element"> {{element.value.recovered}} </td>
     </ng-container>

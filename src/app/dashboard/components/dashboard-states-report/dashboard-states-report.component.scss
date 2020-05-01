@@ -1,87 +1,78 @@
-
-
 .mat-tab-group {
-    margin-bottom: 48px;
-  }
-  
-  table {
-    width: 100%;
-    margin-top: -20px;
-  }
+  margin-bottom: 48px;
+}
 
-  .my {
-    padding: 30px 200px 20px 200px;
+table {
+  width: 100%;
+  margin-top: -20px;
+}
 
-  }
+.state-report {
+  padding: 30px 200px 20px 200px;
+}
 
+.table th {
+  text-align: left;
+}
 
-  .table th{
-    text-align: left;
-  }
-  
-.state{
+.state {
   width: 150px;
   padding-left: 50px;
 }
 
-  
-
-.active{
+.active {
   width: 50px;
 }
 
-  
-.deaths{
+.deaths {
   width: 50px;
 }
 
-.confirmed{
+.confirmed {
   width: 50px;
 }
 
-.recovered{
+.recovered {
   width: 50px;
 }
-
 
 .report-header {
   color: white;
   background: #005b9f;
-  border: .5px solid rgba(0,0,0,.03);
+  border: 0.5px solid rgba(0, 0, 0, 0.03);
   padding: 15px 200px 33px 200px;
-    vertical-align: inherit;
-    font-weight: bold;
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    text-align: left;
-    border-radius: 5px;
-    height: 35px;
-
-
+  vertical-align: inherit;
+  font-weight: bold;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  text-align: left;
+  border-radius: 5px;
+  height: 35px;
 }
 
-.state-title{
-
+.state-title {
   margin-left: -135px;
   margin-right: 374px;
 }
 
-.confirmed-title{
+.confirmed-title {
   width: 30px;
   margin-right: 90px;
 }
-.recovered-title{
+.recovered-title {
   width: 30px;
   margin-right: 80px;
 }
-.active-title{
+.active-title {
   width: 30px;
   margin-right: 105px;
 }
-.deaths-title{
+.deaths-title {
   width: 30px;
   margin-right: 105px;
 }
-
-
-
+::ng-deep .covid-reports {
+  .ui-accordion-toggle-icon {
+    visibility: hidden;
+  }
+}

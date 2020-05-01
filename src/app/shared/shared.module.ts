@@ -28,6 +28,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ToastrModule } from 'ngx-toastr';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 export const routes: Routes = [
 ];
@@ -48,6 +49,7 @@ export const routes: Routes = [
     MatButtonModule,
     DialogModule,
     MatDialogModule,
+    MatTabsModule,
     MatCheckboxModule,
     ToastrModule.forRoot(),
     RouterModule.forChild(routes)
@@ -61,6 +63,7 @@ export const routes: Routes = [
     TableModule,
     CardModule,
     MatTableModule,
+    MatTabsModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,

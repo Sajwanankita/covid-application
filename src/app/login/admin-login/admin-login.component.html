@@ -6,11 +6,9 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-div">
         <mat-form-field class="field-container">
-
           <input matInput placeholder="User Name" formControlName="username" required>
           <mat-error *ngIf="loginForm.get('username').invalid">{{getErrorMessage('username')}}</mat-error>
         </mat-form-field>
-
         <mat-form-field class="field-container">
           <input matInput placeholder="Password" formControlName="password"
             [type]="isToggleChecked() ? 'text':'password'  " required>
@@ -20,7 +18,7 @@
           <mat-checkbox class="show-password-checkbox" ng-checked="isChecked" (click)="toggleCheck()">Show Password
           </mat-checkbox>
           <button type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
-          <button type="button" mat-raised-button (click)="resetForm()" [disabled]="!loginForm.valid">Reset</button>
+          <button type="button" mat-raised-button (click)="resetForm()">Reset</button>
         </mat-card-actions>
       </div>
     </form>

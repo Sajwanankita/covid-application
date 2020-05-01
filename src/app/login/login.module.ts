@@ -23,17 +23,8 @@ import { LoginRoutingModule } from './login-routing.module';
     SharedModule
   ],
   exports: [
-    ReactiveFormsModule,
-    FormsModule,
     AdminLoginComponent,
   ]
 })
-
-/**
- * This is the class that will be imported wherever needed.
- */
 export class LoginModule {
-  constructor() {
-    console.log("Login Module loaded.");
-  }
- }
+}

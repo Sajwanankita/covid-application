@@ -5,15 +5,16 @@ button {
     font-family: 'archia';
     font-size: 22px !important;
     font-weight: 900;
-    margin-top: -4px;
+    margin-top: -35px;
+    margin-right: 10px;
 }
 ::ng-deep body a {
     color: white;
 }
 .title {
-    margin-bottom: 20px;
+    margin: 12px 0px 0px 14px;
     font-family: 'archia';
-    font-size: 24px !important;
+    font-size: 23px !important;
     font-weight: 900;
 }
 .sub-title {
@@ -24,6 +25,7 @@ button {
 }
 
 .header {
+    height: 50px;
     color: white;
     background: #005b9f;
     border: 0.5px solid rgba(0, 0, 0, 0.03);

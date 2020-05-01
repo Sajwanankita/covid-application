@@ -3,6 +3,7 @@ import { Covidservice } from 'src/app/core/services/covid-report.service';
 import { StateWiseReport } from 'src/app/core/models/covid-state-report';
 import { CovidDistrictReport, DistrictData } from 'src/app/core/models/covid-district-report';
 import { ActivatedRoute } from '@angular/router';
+import { Constants } from 'src/app/core/constants/app-constants';
 
 @Component({
   selector: 'covid-app-dashboard-states-report',
@@ -15,27 +16,18 @@ export class DashboardStatesReportComponent implements OnInit {
 
   public districtReport: CovidDistrictReport;
 
-  constructor(private readonly covidservice: Covidservice, private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.districtReport = this.route.snapshot.data.dashboardDistrictData;
     this.reports = this.route.snapshot.data.dashboardStateData.statewise;
-    // this.covidservice.getCovidStateReport().subscribe(data => {
-    //   this.reports = data.statewise;
-    // });
   }
 
-  getDistrictData(state: DistrictData) {
-    console.log(state);
-  }
-
-  onClick(stateCode: string, $event: MouseEvent) {
-    console.log(stateCode)
-    if (stateCode === 'TT') {
+  onClick(stateCode: string, $event: MouseEvent): void {
+    if (stateCode === Constants.STATE_CODE_TOTAL) {
       $event.stopPropagation();
     }
-
   }
 
 }

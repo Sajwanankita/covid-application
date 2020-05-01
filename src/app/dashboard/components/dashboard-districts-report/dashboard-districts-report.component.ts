@@ -13,19 +13,12 @@ export class DashboardDistrictsReportComponent implements OnInit {
   @Input() districtData: CovidDistrictReport;
   reports: any;
   districtName: string;
-  displayedColumns: string[] = ['districtName', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['district', 'active-cases', 'confirmed-cases', 'diseased-cases', 'recovered-cases'];
 
-  constructor(private readonly covidService: Covidservice) {
-
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.districtData) {
       this.reports = this.districtData.districtData;
     }
 
   }
-
 }
-
-// const ELEMENT_DATA = [];

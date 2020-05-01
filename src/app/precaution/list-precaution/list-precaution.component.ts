@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  getPrecautions } from './../../../app/core/fixtures/precaution.fixture';
+import { getPrecautions } from './../../../app/core/fixtures/precaution.fixture';
 import { Precaution } from 'src/app/core/models/precaution';
 
 @Component({
@@ -10,9 +10,8 @@ import { Precaution } from 'src/app/core/models/precaution';
 export class ListPrecautionComponent implements OnInit {
 
   precautions: Array<Precaution>;
-  constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.precautions = getPrecautions();
   }
 

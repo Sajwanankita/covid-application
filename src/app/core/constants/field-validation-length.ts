@@ -7,7 +7,7 @@ export enum FieldValidationLength {
     FULL_NEWS_FIELD_MIN_LENGTH = 10,
     TITLE_FIELD_MAX_LENGTH = 20,
     SUMMARY_FIELD_MAX_LENGTH = 500,
-    DESCRIPTION_FIELD_MAX_LENGTH = 100,
+    DESCRIPTION_FIELD_MAX_LENGTH = 200,
     FULL_NEWS_FIELD_MAX_LENGTH = 5000,
 
     // Validation for Login User Form

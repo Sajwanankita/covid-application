@@ -1,27 +1,28 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import "../node_modules/ngx-toastr/toastr.css";
-@import "bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/ngx-toastr/toastr.css';
 
-// body {
-//   font-family: Roboto, Arial, sans-serif;
-//   margin: 0;
-// }
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; }
-// .mat-card, .mat-card-actions { text-align: -webkit-center; }    
-// .mat-tab-label { color: #ff4081; } 
-// mat-card { max-width: 80%; margin: 2em auto; text-align: center; } 
-// mat-toolbar-row { justify-content: space-between; }
-// mat-raised-button { outline: none !important }   
-button:focus{outline: none; border:0;}
+body {
+    margin: 0;
+}
+button:focus {
+    outline: none;
+    border: 0;
+}
 .toast-top-right {
     top: 5em;
     right: 12px;
 }
 
-mat-raised-button { outline: none !important;
-color: white; }   
-button:focus{outline: none; border:0;}
+mat-raised-button {
+    outline: none !important;
+    color: white;
+}
+button:focus {
+    outline: none;
+    border: 0;
+}

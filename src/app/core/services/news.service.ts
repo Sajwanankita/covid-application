@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { News } from '../models/news';
 import { catchError } from 'rxjs/operators';
+import { BaseDataService } from './base-service';
+import { DataServiceError } from './error-data';
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class NewsService {
+export class NewsService extends BaseDataService {
 
     apiurl = 'api/news';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -16,20 +18,15 @@ export class NewsService {
         headers: this.headers
     };
 
-    constructor(private http: HttpClient) { }
-
-    private handleError(error: any) {
-        console.error(error);
-        return throwError(error);
+    constructor(private http: HttpClient) {
+        super()
     }
 
-    fetchNews(): Observable<News[]> {
+    fetchNews(): Observable<News[] | DataServiceError> {
         return this.http.get<News[]>(this.apiurl).pipe(catchError(this.handleError));
     }
 
     addNews(news: News): Observable<any> {
-        console.log('here.... hhhhhhhhhhhhh...');
-        console.log(news);
         return this.http.post<News>(this.apiurl, news, this.httpOptions).pipe(catchError(this.handleError));
     }
 }
