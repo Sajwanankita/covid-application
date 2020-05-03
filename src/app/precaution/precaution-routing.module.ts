@@ -1,5 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { ListPrecautionComponent } from './list-precaution/list-precaution.component';
 
 const RULES_CONF_ROUTE: Routes = [

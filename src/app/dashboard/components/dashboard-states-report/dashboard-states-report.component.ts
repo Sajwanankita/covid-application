@@ -1,9 +1,8 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Covidservice } from 'src/app/core/services/covid-report.service';
-import { StateWiseReport } from 'src/app/core/models/covid-state-report';
-import { CovidDistrictReport, DistrictData } from 'src/app/core/models/covid-district-report';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from 'src/app/core/constants/app-constants';
+import { CovidDistrictReport } from 'src/app/core/models/covid-district-report';
+import { StateWiseReport } from 'src/app/core/models/covid-state-report';
 
 @Component({
   selector: 'covid-app-dashboard-states-report',

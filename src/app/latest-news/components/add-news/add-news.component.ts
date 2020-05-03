@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FieldValidationLength } from 'src/app/core/constants/field-validation-length';
-import { News } from '../../../core/models/news';
-import { NewsService } from 'src/app/core/services/news.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/core/constants/app-constants';
+import { FieldValidationConstants } from 'src/app/core/constants/field-validation-constants';
+import { NewsService } from 'src/app/core/services/news.service';
+import { News } from '../../../core/models/news';
 
 @Component({
   selector: 'covid-app-add-news',
@@ -15,35 +15,30 @@ import { Constants } from 'src/app/core/constants/app-constants';
 export class AddNewsComponent implements OnInit {
 
   addNewsForm: FormGroup;
-
   news: News;
 
   constructor(private formBuilder: FormBuilder, private readonly route: ActivatedRoute,
-    private readonly router: Router, private newsService: NewsService,
+    private readonly router: Router, private readonly newsService: NewsService,
     private readonly toastrService: ToastrService) {
 
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem(Constants
-      .AUTHENTICATION_TOKEN_KEY) === null) {
-      this.router.navigate([Constants.LOGIN_ROUTE]);
-      this.toastrService.info('Please login to add news!', Constants.COVID_INDIA_PORTAL);
-
-    }
     this.addNewsForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(FieldValidationLength.TITLE_FIELD_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.TITLE_FIELD_MAX_LENGTH)]],
-      description: ['', [Validators.required, Validators.minLength(FieldValidationLength.DESCRIPTION_FIELD_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.DESCRIPTION_FIELD_MAX_LENGTH)]],
-      summary: ['', [Validators.required, Validators.minLength(FieldValidationLength.SUMMARY_FIELD_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.SUMMARY_FIELD_MAX_LENGTH)]],
-      fullNews: ['', [Validators.required, Validators.minLength(FieldValidationLength.FULL_NEWS_FIELD_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.FULL_NEWS_FIELD_MAX_LENGTH)]]
+      title: ['', [Validators.required, Validators.minLength(FieldValidationConstants.TITLE_FIELD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.TITLE_FIELD_MAX_LENGTH)]],
+      description: ['', [Validators.required, Validators.minLength(FieldValidationConstants.DESCRIPTION_FIELD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.DESCRIPTION_FIELD_MAX_LENGTH)]],
+      summary: ['', [Validators.required, Validators.minLength(FieldValidationConstants.SUMMARY_FIELD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.SUMMARY_FIELD_MAX_LENGTH)]],
+      fullNews: ['', [Validators.required, Validators.minLength(FieldValidationConstants.FULL_NEWS_FIELD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.FULL_NEWS_FIELD_MAX_LENGTH)]]
     });
   }
+
   addNews(): void {
     this.newsService.addNews(this.addNewsForm.value).subscribe();
+    this.toastrService.info('News has been successfully added', Constants.COVID_INDIA_PORTAL);
     this.router.navigate([Constants.NEWS_ROUTE]);
   }
 
@@ -63,11 +58,11 @@ export class AddNewsComponent implements OnInit {
     }
   }
 
-  cancelForm() {
+  cancelForm(): void {
     this.router.navigate([Constants.NEWS_ROUTE]);
   }
 
-  resetForm() {
+  resetForm(): void {
     this.addNewsForm.reset();
   }
 

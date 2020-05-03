@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { DataServiceError } from './error-data';
+import { DataServiceError } from '../models/error-data';
 import { Injectable } from '@angular/core';
 
 @Injectable()

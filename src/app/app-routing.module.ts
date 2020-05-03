@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const APP_ROUTES: Routes = [
@@ -11,7 +11,6 @@ const APP_ROUTES: Routes = [
 
   {
     path: 'dashboard',
-    pathMatch: 'full',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
 
   },
@@ -25,7 +24,6 @@ const APP_ROUTES: Routes = [
   },
   {
     path: 'login',
-    pathMatch: 'full',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {

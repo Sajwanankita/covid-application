@@ -1,34 +1,23 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { AccordionModule } from 'primeng/accordion';
-import { TableModule } from 'primeng/table';
-import { CardModule } from 'primeng/card';
-import { PanelModule } from 'primeng/panel';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import {
-  MatCardModule,
-} from '@angular/material/card';
-import {
-  MatInputModule,
-
-} from '@angular/material/input';
-import {
-  MatButtonModule,
-} from '@angular/material/button';
-import {
-  MatTableModule,
-} from '@angular/material/table';
-import {
-  MatDialogModule
-} from '@angular/material/dialog';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ToastrModule } from 'ngx-toastr';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, Routes } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { HeaderComponent } from './components/header/header.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
 ];

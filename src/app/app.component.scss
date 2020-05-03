@@ -9,3 +9,14 @@ a {
 .mat-tab-link {
     padding: 0px 200px;
 }
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+.nav-panel{
+    display: block;
+    height: calc(100% - 100px);
+    overflow: auto;
+}

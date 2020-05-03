@@ -1,8 +1,8 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { DashboardStatesReportComponent } from './components/dashboard-states-report/dashboard-states-report.component';
-import { DashboardStateDataResolverService } from './resolvers/dashboard-state-report-resolver.service';
 import { DashboardDistrictDataResolverService } from './resolvers/dashboard-district-report-resolver.service';
+import { DashboardStateDataResolverService } from './resolvers/dashboard-state-report-resolver.service';
 
 
 const RULES_CONF_ROUTE: Routes = [

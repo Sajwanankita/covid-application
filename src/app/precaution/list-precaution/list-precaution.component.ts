@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { getPrecautions } from './../../../app/core/fixtures/precaution.fixture';
 import { Precaution } from 'src/app/core/models/precaution';
+import { getPrecautions } from './../../../app/core/fixtures/precaution.fixture';
 
 @Component({
   selector: 'covid-app-list-precaution',
@@ -9,7 +9,9 @@ import { Precaution } from 'src/app/core/models/precaution';
 })
 export class ListPrecautionComponent implements OnInit {
 
-  precautions: Array<Precaution>;
+  precautions: Array<Precaution>
+  ;
+  title = 'Precautions';
 
   ngOnInit(): void {
     this.precautions = getPrecautions();

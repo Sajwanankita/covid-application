@@ -1,4 +1,4 @@
-export enum FieldValidationLength {
+export enum FieldValidationConstants  {
 
     // Validation for Add News Form
     TITLE_FIELD_MIN_LENGTH = 5,

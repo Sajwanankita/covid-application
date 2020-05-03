@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/core/constants/app-constants';
 
@@ -17,9 +17,9 @@ export class HeaderComponent {
   }
 
   logoutUser(): void {
-    localStorage.removeItem(Constants.AUTHENTICATION_TOKEN_KEY);
+    localStorage.clear();
     if (this.router.url === '/news/add-news') {
-      this.router.navigate([Constants.NEWS_ROUTE]);
+      this.router.navigate([Constants.LOGIN_ROUTE]);
     }
   }
 

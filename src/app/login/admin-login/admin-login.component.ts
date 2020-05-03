@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoginService } from 'src/app/core/services/login.service';
-import { FieldValidationLength } from 'src/app/core/constants/field-validation-length';
 import { Constants } from 'src/app/core/constants/app-constants';
+import { FieldValidationConstants } from 'src/app/core/constants/field-validation-constants';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   templateUrl: './admin-login.component.html',
@@ -16,7 +16,7 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router,
     private readonly loginService: LoginService,
-    private route: ActivatedRoute, private readonly toastrService: ToastrService) {
+    private readonly route: ActivatedRoute, private readonly toastrService: ToastrService) {
   }
 
   /**
@@ -42,11 +42,11 @@ export class AdminLoginComponent implements OnInit {
     this.isChecked = false;
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required,
-      Validators.minLength(FieldValidationLength.USERNAME_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.USERNAME_MAX_LENGTH)]],
+      Validators.minLength(FieldValidationConstants.USERNAME_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.USERNAME_MAX_LENGTH)]],
       password: ['', [Validators.required,
-      Validators.minLength(FieldValidationLength.PASSWORD_MIN_LENGTH),
-      Validators.maxLength(FieldValidationLength.PASSWORD_MAX_LENGTH)]]
+      Validators.minLength(FieldValidationConstants.PASSWORD_MIN_LENGTH),
+      Validators.maxLength(FieldValidationConstants.PASSWORD_MAX_LENGTH)]]
     });
   }
 

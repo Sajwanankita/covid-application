@@ -3,9 +3,9 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { take, map } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
-import { Covidservice } from '../../core/services/covid-report.service';
+import { CovidDataService } from '../../core/services/covid-report.service';
 import { CovidDistrictReport } from '../../core/models/covid-district-report';
-import { DataServiceError } from 'src/app/core/services/error-data';
+import { DataServiceError } from 'src/app/core/models/error-data';
 import { News } from 'src/app/core/models/news';
 import { NewsService } from 'src/app/core/services/news.service';
 

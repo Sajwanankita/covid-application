@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
-import { News } from '../../../core/models/news';
-import { NewsService } from '../../../core/services/news.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DataServiceError } from 'src/app/core/services/error-data';
+import { Subscription } from 'rxjs';
 import { Constants } from 'src/app/core/constants/app-constants';
+import { DataServiceError } from 'src/app/core/models/error-data';
+import { News } from '../../../core/models/news';
+
+
 
 
 @Component({
@@ -17,12 +18,13 @@ export class ListNewsComponent implements OnInit {
 
   display = false;
   newsList: News[] | DataServiceError = [];
+  subscription: Subscription;
 
   constructor(private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly newsService: NewsService,
     private readonly toastrService: ToastrService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.newsList = this.route.snapshot.data.newsData;

@@ -17,7 +17,7 @@
         <mat-card-actions>
           <mat-checkbox class="show-password-checkbox" ng-checked="isChecked" (click)="toggleCheck()">Show Password
           </mat-checkbox>
-          <button type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
+          <button class="submit-button" type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
           <button type="button" mat-raised-button (click)="resetForm()">Reset</button>
         </mat-card-actions>
       </div>

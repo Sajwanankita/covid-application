@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { News } from '../models/news';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { DataServiceError } from '../models/error-data';
+import { News } from '../models/news';
 import { BaseDataService } from './base-service';
-import { DataServiceError } from './error-data';
 
 
 @Injectable({
@@ -12,6 +12,7 @@ import { DataServiceError } from './error-data';
 })
 export class NewsService extends BaseDataService {
 
+    private subject = new Subject<any>();
     apiurl = 'api/news';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     httpOptions = {
@@ -19,14 +20,16 @@ export class NewsService extends BaseDataService {
     };
 
     constructor(private http: HttpClient) {
-        super()
+        super();
     }
 
     fetchNews(): Observable<News[] | DataServiceError> {
-        return this.http.get<News[]>(this.apiurl).pipe(catchError(this.handleError));
+        return this.http.get<News[]>(this.apiurl, {
+            headers: this.headers
+        }).pipe(catchError(this.handleError));
     }
 
-    addNews(news: News): Observable<any> {
+    addNews(news: News): Observable<News | DataServiceError> {
         return this.http.post<News>(this.apiurl, news, this.httpOptions).pipe(catchError(this.handleError));
     }
 }

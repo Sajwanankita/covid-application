@@ -1,7 +1,7 @@
 export interface CovidStateReport {
-    cases_time_series: Array<CasesTimeSeries>;
+    cases_time_series?: Array<CasesTimeSeries>;
     statewise: Array<StateWiseReport>;
-    tested: Array<TestReport>;
+    tested?: Array<TestReport>;
 }
 
 export interface CasesTimeSeries {

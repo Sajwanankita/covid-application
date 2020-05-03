@@ -7,8 +7,6 @@ import { getUsers } from './../fixtures/user.fixture';
 })
 export class LoginService {
 
-    private users: User[];
-
     validateUser(user: User): boolean {
         let isValidUser = false;
         const index = getUsers().findIndex(usr => user.username.toLowerCase() === usr.username.toLowerCase());

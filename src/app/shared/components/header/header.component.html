@@ -1,13 +1,12 @@
 <div class="header">
     <div class="title">Covid App India</div>
     <div class="sub-title">
-        <button mat-button>
-            <a *ngIf="!isUserActive()" [routerLink]="['login']" [queryParams]="{'redirectTo':router.url}"
-                routerLinkActive='active'>Login
+        <button *ngIf="!isUserActive()" class="login-button" mat-button>
+            <a [routerLink]="['login']" [queryParams]="{'redirectTo':router.url}" routerLinkActive='active'>Login
             </a>
         </button>
-        <button mat-button (click)="logoutUser()">
-            <a *ngIf="isUserActive()"  >Logout
+        <button *ngIf="isUserActive()" class="logout-button" mat-button (click)="logoutUser()">
+            <a>Logout
             </a>
         </button>
     </div>

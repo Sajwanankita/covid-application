@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { Covidservice } from './core/services/covid-report.service';
 import { Router } from '@angular/router';
-import { Link } from './core/models/link';
 import { Constants } from './core/constants/app-constants';
+import { Link } from './core/models/link';
 
 @Component({
   selector: 'covid-app-root',
@@ -27,15 +25,15 @@ export class AppComponent implements OnInit {
 
   getLinks(): Array<Link> {
     return [{
-      link: 'dashboard',
+      link: Constants.DASHBOARD_ROUTE,
       title: 'Dasboard'
     },
     {
-      link: 'news',
+      link: Constants.NEWS_ROUTE,
       title: 'Latest News'
     },
     {
-      link: 'precautions',
+      link: Constants.PRECAUTIONS_ROUTE,
       title: 'Precautions'
     }
     ];

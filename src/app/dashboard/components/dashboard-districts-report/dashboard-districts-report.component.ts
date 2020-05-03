@@ -1,16 +1,14 @@
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { Covidservice } from 'src/app/core/services/covid-report.service';
-import { DistrictMetaData, DistrictData, CovidDistrictReportMetaData, CovidDistrictReport } from 'src/app/core/models/covid-district-report';
-import { log } from 'util';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CovidDistrictReportMetaData } from 'src/app/core/models/covid-district-report';
 
 @Component({
   selector: 'covid-app-dashboard-districts-report',
   templateUrl: './dashboard-districts-report.component.html',
   styleUrls: ['./dashboard-districts-report.component.scss']
 })
-export class DashboardDistrictsReportComponent implements OnInit {
+export class DashboardDistrictsReportComponent implements OnInit, OnChanges {
 
-  @Input() districtData: CovidDistrictReport;
+  @Input() districtData: CovidDistrictReportMetaData;
   reports: any;
   districtName: string;
   displayedColumns: string[] = ['district', 'active-cases', 'confirmed-cases', 'diseased-cases', 'recovered-cases'];
@@ -19,6 +17,11 @@ export class DashboardDistrictsReportComponent implements OnInit {
     if (this.districtData) {
       this.reports = this.districtData.districtData;
     }
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.districtData && this.districtData) {
+      this.reports = this.districtData.districtData;
+    }
   }
 }
